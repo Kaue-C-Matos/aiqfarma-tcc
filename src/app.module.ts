@@ -6,6 +6,9 @@ import { DataSource } from 'typeorm';
 import { Endereco } from './Endereco/endereco.entity';
 import { EnderecoController } from './Endereco/endereco.controller';
 import { EnderecoService } from './Endereco/endereco.service';
+import { Imagem } from './imagem/imagem.entity';
+import { ImageController } from './imagem/imagem.controller';
+import { ImagemService } from './imagem/imagem.service';
 
 @Module({
   imports: [
@@ -16,13 +19,13 @@ import { EnderecoService } from './Endereco/endereco.service';
       username: 'root',
       password: '',
       database: 'aiq_farma',
-      entities: [Endereco],
+      entities: [Endereco,Imagem],
       synchronize: true,
     }),
-    TypeOrmModule.forFeature([Endereco])
+    TypeOrmModule.forFeature([Endereco, Imagem])
   ],
-  controllers: [EnderecoController],
-  providers: [EnderecoService]
+  controllers: [EnderecoController, ImageController],
+  providers: [EnderecoService,ImagemService]
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
