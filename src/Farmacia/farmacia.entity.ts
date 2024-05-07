@@ -1,5 +1,6 @@
 import { Endereco } from "src/Endereco/endereco.entity";
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Produtos } from "src/Produtos/produto.entity";
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'farmacia'})
 export class Farmacia {
@@ -21,4 +22,7 @@ export class Farmacia {
     @OneToOne(() => Endereco)
     @JoinColumn({ name: 'id_endereco' })
     endereco: Endereco;
+
+    @OneToMany(()=>Produtos, (produtos)=>produtos.farmacia)
+    produtos: Produtos[]
 }

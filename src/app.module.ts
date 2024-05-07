@@ -12,6 +12,9 @@ import { ImagemService } from './imagem/imagem.service';
 import { Farmacia } from './Farmacia/farmacia.entity';
 import { FarmaciaController } from './Farmacia/farmacia.controller';
 import { FarmaciaService } from './Farmacia/farmacia.service';
+import { Produtos } from './Produtos/produto.entity';
+import { ProdutoController } from './Produtos/produto.controller';
+import { ProdutoService } from './Produtos/produto.service';
 
 @Module({
   imports: [
@@ -22,13 +25,13 @@ import { FarmaciaService } from './Farmacia/farmacia.service';
       username: 'root',
       password: '',
       database: 'aiq_farma',
-      entities: [Endereco,Imagem, Farmacia],
+      entities: [Endereco,Imagem, Farmacia, Produtos],
       synchronize: false,
     }),
-    TypeOrmModule.forFeature([Endereco, Imagem, Farmacia])
+    TypeOrmModule.forFeature([Endereco, Imagem, Farmacia,Produtos])
   ],
-  controllers: [EnderecoController, ImageController, FarmaciaController],
-  providers: [EnderecoService,ImagemService, FarmaciaService]
+  controllers: [EnderecoController, ImageController, FarmaciaController, ProdutoController],
+  providers: [EnderecoService,ImagemService, FarmaciaService,ProdutoService]
 })
 export class AppModule {
   constructor(private dataSource: DataSource) {}
