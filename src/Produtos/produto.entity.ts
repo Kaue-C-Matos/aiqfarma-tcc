@@ -1,6 +1,6 @@
 import { Farmacia } from "src/Farmacia/farmacia.entity";
 import { Imagem } from "src/imagem/imagem.entity";
-import { Column, Double, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Decimal128, Double, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'produtos'})
 export class Produtos {
@@ -10,8 +10,8 @@ export class Produtos {
     @Column()
     nome: string
 
-    @Column()
-    preco: number 
+    @Column('decimal', {precision: 6, scale: 2})
+    preco: number
     
     @Column()
     descricao: string
@@ -19,12 +19,18 @@ export class Produtos {
     @Column()
     categoria: string
 
+    @Column()
+    id_farmacia: number
+
     @ManyToOne(()=>Farmacia,(farmacia)=>farmacia.produtos)
     @JoinColumn({name:"id_farmacia"})
     farmacia: Farmacia
 
     @Column()
     status:boolean;
+
+    @Column()
+    id_imagem: number
 
     @OneToOne(()=>Imagem)
     @JoinColumn({name:"id_imagem"})
