@@ -1,7 +1,6 @@
-import { Body, Controller, Get, NotFoundException, Param, Post, Put,Delete, HttpStatus } from "@nestjs/common";
+import { Body, Controller, Get, NotFoundException, Param, Post, Put,Delete, HttpStatus, Response } from "@nestjs/common";
 import { ImagemService } from "./imagem.service";
 import { Imagem } from "./imagem.entity";
-import Response from "superagent/lib/node/response";
 
 
 @Controller("imagem")
@@ -22,7 +21,7 @@ export class ImageController {
     }
 
     @Post()
-    postImagem(@Body() imagemData: Partial<Imagem>): Promisse<Imagem>{
+    postImagem(@Body() imagemData: Partial<Imagem>): Promise<Imagem>{
         return this.imagemService.cadastrarImagem(imagemData)
      }
 

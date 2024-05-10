@@ -12,7 +12,7 @@ export class FarmaciaService{
 
     async findAll(): Promise<Farmacia[]>{
         return this.farmaciaRespository.find({
-            relations: {endereco: true}
+            relations: {endereco: true, produtos: true}
         })
     }
 }
