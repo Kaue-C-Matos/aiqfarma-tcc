@@ -15,4 +15,12 @@ export class FarmaciaService{
             relations: {endereco: true, produtos: true}
         })
     }
+
+    async encontraFarmaciaId(id_farmacia: number): Promise<Farmacia>{
+        const farmacia = await this.farmaciaRespository.findOneBy({id_farmacia});
+        if(!farmacia){
+            return null
+        }
+        return farmacia;
+    }
 }

@@ -1,4 +1,4 @@
-import { Controller, Get } from "@nestjs/common";
+import { Controller, Get, NotFoundException, Param } from "@nestjs/common";
 import { FarmaciaService } from "./farmacia.service";
 import { Farmacia } from "./farmacia.entity";
 
@@ -9,5 +9,14 @@ export class FarmaciaController{
     @Get()
     getFarmacia(): Promise<Farmacia[]>{
         return this.farmaciaService.findAll()
+    }
+
+    @Get('/:id')
+    async getFarmaciaId(@Param('id') id: number): Promise<Farmacia>{
+        const farmacia = await this.farmaciaService.encontraFarmaciaId(id)
+        if (farmacia == null){
+            throw new NotFoundException("Produto não encontrado, por favor verifique o ID")
+        }
+        return farmacia
     }
 }
