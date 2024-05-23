@@ -1,31 +1,38 @@
 import './App.css';
-import { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
+import { createBrowserRouter, RouterProvider} from "react-router-dom"
+import ProdutosCadastrados from './pages/produtosCadastrados.js';
+import Inicio from './pages/inicio.js';
+import React from 'react';
+import { ConfigProvider } from 'antd';
 
 function App() {
-  const [farmacia, setFarmacia] = useState([])
-
-  const request = useCallback(
-    async () => {
-      try {
-        const {data} = await axios('http://localhost:3000/farmacia');
-        setFarmacia(data)
-      } catch(err) {
-        return err
+  
+  const routes = createBrowserRouter([
+      {
+        path: "/",
+        element: <Inicio/>
+      },
+      {
+        path: "/produtos",
+        element: <ProdutosCadastrados/>
       }
-    }, []) 
-
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(()=>{
-    request()
-  }, [])
-
+    ])
 
   return (
     <div>
-      {farmacia.map((farmacia) => (
-        <p key={farmacia.id_farmacia}>{farmacia.nome}</p>
-      ))}
+      <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+</style>
+      <ConfigProvider
+        theme={{
+          token: {
+            colorPrimary: "#B60000",
+            fontFamily: "Inter"
+          },
+        }}
+      >    
+        <RouterProvider router={routes}/>
+      </ConfigProvider>
     </div>
   );
 }
