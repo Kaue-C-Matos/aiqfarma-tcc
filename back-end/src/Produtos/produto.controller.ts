@@ -22,6 +22,15 @@ export class ProdutoController{
         return produto
     }
 
+    @Get('farmacia/:id')
+    async getProdutosIdFarm(@Param('id') id:number): Promise<Produtos[]>{
+        const produto = await this.produtoService.encontraProdutoIdFarm(id)
+        if (produto == null){
+            throw new NotFoundException("Farmácia não encontrada, por favor verifique o ID")
+        }
+        return produto
+    }
+
     @Post()
     postProduto(@Body() produtoData: Partial<Produtos>): Promise<Produtos>{
         return this.produtoService.cadastraProduto(produtoData)

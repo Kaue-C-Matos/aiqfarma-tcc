@@ -26,6 +26,14 @@ export class ProdutoService{
         return produto;
     }
 
+    async encontraProdutoIdFarm(id_farmacia: number): Promise<Produtos[]>{
+        const produtos = await this.produtoRepository.findBy({id_farmacia});
+        if(!produtos){
+            return null
+        }
+        return produtos;
+    }
+
     async cadastraProduto(produtoData: Partial<Produtos>): Promise<Produtos>{
         return this.produtoRepository.save(produtoData);
     }
