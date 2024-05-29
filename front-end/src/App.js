@@ -1,6 +1,7 @@
 import './App.css';
 import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import ProdutosCadastrados from './pages/produtosCadastrados.js';
+import DetalheProduto from './pages/DetalheProduto.js';
 import Inicio from './pages/inicio.js';
 import React from 'react';
 import { ConfigProvider } from 'antd';
@@ -15,6 +16,10 @@ function App() {
       {
         path: "/produtos",
         element: <ProdutosCadastrados/>
+      },
+      {
+        path:"/detalhes",
+        element: <DetalheProduto/>
       }
     ])
 
