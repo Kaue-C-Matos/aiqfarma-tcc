@@ -4,6 +4,7 @@ import ProdutosCadastrados from './pages/produtosCadastrados.js';
 import Inicio from './pages/inicio.js';
 import React from 'react';
 import { ConfigProvider } from 'antd';
+import DetalheProduto from './pages/DetalheProduto.js';
 
 function App() {
   
@@ -15,6 +16,10 @@ function App() {
       {
         path: "/produtos",
         element: <ProdutosCadastrados/>
+      },
+      {
+        path: "/detalhes",
+        element: <DetalheProduto/>
       }
     ])
 
