@@ -2,8 +2,10 @@ import './App.css';
 import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import ProdutosCadastrados from './pages/produtosCadastrados.js';
 import Inicio from './pages/inicio.js';
+import DetalheProduto from './pages/DetalheProduto.js'
 import React from 'react';
 import { ConfigProvider } from 'antd';
+import Catalogo from './pages/Catalogo.js';
 
 function App() {
   
@@ -15,6 +17,14 @@ function App() {
       {
         path: "/produtos",
         element: <ProdutosCadastrados/>
+      },
+      {
+        path: "/detalhes",
+        element: <DetalheProduto/>
+      },
+      {
+        path: "/catalogo",
+        element: <Catalogo/>
       }
     ])
 
@@ -27,7 +37,8 @@ function App() {
         theme={{
           token: {
             colorPrimary: "#B60000",
-            fontFamily: "Inter"
+            fontFamily: "Inter",
+            padding: "0px"
           },
         }}
       >    
