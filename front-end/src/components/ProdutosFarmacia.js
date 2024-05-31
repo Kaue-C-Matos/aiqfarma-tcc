@@ -3,13 +3,13 @@ import { Flex, Typography } from "antd"
 const {Text, Title} = Typography
 
 function ProdutosFarmacia(props){
-    const card = {padding: "0", background: "#B60000", position: "relative", border: "3px solid"}
+    const card = {padding: "0", background: "#B60000", position: "relative", border: "3px solid", maxWidth: "100%"}
 
     return(
         <Flex style={card}>
-            <img src={props.imagem} alt={props.imgDescricao} width="175px" style={{backgroundColor: "#fff"}}/>
+            <img src={props.imagem} alt={props.imgDescricao} width="150px" style={{backgroundColor: "#fff"}}/>
             <div style={{marginLeft: "10px", textAlign: "left"}}>
-                <Title style={{color: "#fff", fontSize: "25px"}}>{props.nome}</Title>
+                <Title style={{color: "#fff", fontSize: "25px", whiteSpace: "pre-wrap"}}>{props.nome}</Title>
                 <Text style={{color: "#fff", fontSize: "20px"}}>R$ {props.preco}</Text>
             </div>
             <div style={{position: "absolute", bottom: "10px", right: "10px"}}>
