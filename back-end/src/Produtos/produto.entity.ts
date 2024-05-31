@@ -1,6 +1,6 @@
 import { Farmacia } from "src/Farmacia/farmacia.entity";
 import { Imagem } from "src/imagem/imagem.entity";
-import { Column, Decimal128, Double, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne, OneToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity({name: 'produtos'})
 export class Produtos {
