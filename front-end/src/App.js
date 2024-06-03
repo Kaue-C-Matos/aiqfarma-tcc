@@ -5,6 +5,7 @@ import Inicio from './pages/inicio.js';
 import React from 'react';
 import { ConfigProvider } from 'antd';
 import DetalheProduto from './pages/DetalheProduto.js';
+import Catalogo from './pages/Catalogo.js';
 
 function App() {
   
@@ -20,6 +21,10 @@ function App() {
       {
         path: "/detalhes",
         element: <DetalheProduto/>
+      },
+      {
+        path: "/catalogo",
+        element: <Catalogo/>
       }
     ])
 
@@ -32,7 +37,8 @@ function App() {
         theme={{
           token: {
             colorPrimary: "#B60000",
-            fontFamily: "Inter"
+            fontFamily: "Inter",
+            padding: "0px"
           },
         }}
       >    
