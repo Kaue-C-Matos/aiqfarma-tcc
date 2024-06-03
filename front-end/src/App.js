@@ -1,4 +1,3 @@
-import './App.css';
 import { createBrowserRouter, RouterProvider} from "react-router-dom"
 import ProdutosCadastrados from './pages/produtosCadastrados.js';
 import Inicio from './pages/inicio.js';
@@ -19,7 +18,7 @@ function App() {
         element: <ProdutosCadastrados/>
       },
       {
-        path: "/detalhes",
+        path: "/detalhes/:produtoEscolhido",
         element: <DetalheProduto/>
       },
       {

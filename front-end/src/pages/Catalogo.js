@@ -3,9 +3,12 @@ import Cabecalho from "../components/Cabecalho"
 import CardProduto from "../components/CardProduto"
 import { useCallback, useEffect, useState } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 const {Title} = Typography
 
-function Catalogo(){    
+function Catalogo(){
+    const navigate = useNavigate()
+
     const [produtos, setProdutos] = useState([])
     const [imagens, setImagens] = useState([])
     
@@ -27,7 +30,7 @@ function Catalogo(){
     }, [fetchData])
     return(
         <div>
-            <Cabecalho/>
+            <Cabecalho rota={"/"}/>
             <Title level={3} style={{backgroundColor: "red", height: 50, margin: "20px 0 0 0", color: "white"}}>Medicamentos</Title>
             <Carousel slidesToShow={2.02} style={{backgroundColor: "red", padding: "20px 5px"}} >
                 {produtos.map((produtos)=>{
@@ -38,6 +41,7 @@ function Catalogo(){
                         preco={produtos.preco}
                         imgDescricao={imagem.descricao}
                         key={produtos.id_produto}
+                        clique={() =>navigate(`/detalhes/${produtos.id_produto}`)}
                     />)
                 })}
             </Carousel>
