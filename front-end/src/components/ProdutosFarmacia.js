@@ -7,10 +7,10 @@ function ProdutosFarmacia(props){
 
     return(
         <Flex style={card}>
-            <img src={props.imagem} alt={props.imgDescricao} width="150px" style={{backgroundColor: "#fff"}}/>
+            <img src={props.imagem} alt={props.imgDescricao} width="100px" style={{backgroundColor: "#fff"}}/>
             <div style={{marginLeft: "10px", textAlign: "left"}}>
-                <Title style={{color: "#fff", fontSize: "25px", whiteSpace: "pre-wrap"}}>{props.nome}</Title>
-                <Text style={{color: "#fff", fontSize: "20px"}}>R$ {props.preco}</Text>
+                <Title style={{color: "#fff", fontSize: "20px", whiteSpace: "pre-wrap"}}>{props.nome}</Title>
+                <Text style={{color: "#fff", fontSize: "18px"}}>R$ {props.preco}</Text>
             </div>
             <div style={{position: "absolute", bottom: "10px", right: "10px"}}>
                 <DeleteFilled style={{color: "#fff", fontSize: "20px"}}/>

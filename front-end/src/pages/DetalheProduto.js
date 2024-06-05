@@ -15,12 +15,13 @@ function DetalheProduto(){
   const fetchData = useCallback(async () => {
     try {
       const produtoResponse = await axios.get(`http://localhost:3000/produtos/id/${produtoEscolhido}`)
-      setProduto(produtoResponse.data)
+      const produtoData = produtoResponse.data
+      setProduto(produtoData)
       
-      const imagemResponse = await axios.get(`http://localhost:3000/imagem/id/${produtoResponse.data.id_imagem}`)
+      const imagemResponse = await axios.get(`http://localhost:3000/imagem/id/${produtoData.id_imagem}`)
       setImagem(imagemResponse.data)
 
-      const farmaciaResponse= await axios.get(`http://localhost:3000/farmacia/${produtoResponse.data.id_farmacia}`)
+      const farmaciaResponse= await axios.get(`http://localhost:3000/farmacia/${produtoData.id_farmacia}`)
       setFarmacia(farmaciaResponse.data)
     } catch (error) {
         console.error('Erro ao buscar dados:', error);

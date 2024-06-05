@@ -33,7 +33,26 @@ function Catalogo(){
             <Cabecalho rota={"/"}/>
             <Title level={3} style={{backgroundColor: "red", height: 50, margin: "20px 0 0 0", color: "white"}}>Medicamentos</Title>
             <Carousel slidesToShow={2.02} style={{backgroundColor: "red", padding: "20px 5px"}} >
-                {produtos.map((produtos)=>{
+                {produtos
+                .filter(produtos => produtos.categoria === "medicamento")
+                .map((produtos)=>{
+                    const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
+                    return(<CardProduto 
+                        imagem={imagem.imagem} 
+                        nome={produtos.nome} 
+                        preco={produtos.preco}
+                        imgDescricao={imagem.descricao}
+                        key={produtos.id_produto}
+                        clique={() =>navigate(`/detalhes/${produtos.id_produto}`)}
+                    />)
+                })}
+            </Carousel>
+
+            <Title level={3} style={{backgroundColor: "red", height: 50, margin: "20px 0 0 0", color: "white"}}>Higiene</Title>
+            <Carousel slidesToShow={2.02} style={{backgroundColor: "red", padding: "20px 5px"}} >
+                {produtos
+                .filter(produtos => produtos.categoria === "higiene")
+                .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<CardProduto 
                         imagem={imagem.imagem} 

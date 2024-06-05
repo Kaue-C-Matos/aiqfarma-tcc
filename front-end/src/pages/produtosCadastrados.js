@@ -1,5 +1,5 @@
-import { Button, Divider, Typography } from "antd";
-import { ArrowLeftOutlined, PlusSquareFilled } from '@ant-design/icons'
+import { Button, Typography } from "antd";
+import { ArrowLeftOutlined, PlusSquareFilled, SnippetsOutlined } from '@ant-design/icons'
 import ProdutosFarmacia from "../components/ProdutosFarmacia";
 import { useCallback, useEffect, useState } from "react";
 import axios from "axios";
@@ -29,18 +29,19 @@ function ProdutosCadastrados() {
         fetchData()
     }, [fetchData])
 
-    const btnCadastrar = {color: "#B60000", height: "auto" ,width: "90%", fontSize: "25px", borderWidth: "5px",borderColor: "#B60000" , padding: "10px",
+    const btnCadastrar = {color: "#B60000", height: "100px" ,width: "90%", fontSize: "25px", borderWidth: "5px",borderColor: "#B60000" , padding: "10px",
     boxSizing: "border-box", marginBottom: "40px"}
 
     return(
-        <Divider>
-            <Divider orientation="left">
-                <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "25px"}}/>
-            </Divider>
-            <Title type="primary" style={{color: "#B60000"}}>Produtos Cadastrados</Title>
+        <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div style={{display: "flex", justifyContent: "space-between", margin: 10, width: "90%"}}>
+                <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "30px"}}/>
+                <SnippetsOutlined onClick={()=>navigate("/pedidos")} style={{fontSize: "30px"}}/>
+            </div>
+            <Title type="primary" style={{color: "#B60000", textAlign: "center"}}>Produtos Cadastrados</Title>
             <Button type="dashed" icon={<PlusSquareFilled/>} iconPosition={"position"} 
             style={btnCadastrar}>
-                Cadastrar novo produto
+                Cadastrar novo<br/>produto
             </Button>
             <div>
                 {produtos.map((produtos)=>{
@@ -54,7 +55,7 @@ function ProdutosCadastrados() {
                     />)
                 })}
             </div>
-        </Divider>
+        </div>
     )
 }
 
