@@ -13,4 +13,12 @@ export class EnderecoService{
     async findAll(): Promise<Endereco[]>{
         return this.enderecoRepository.find()
     }
+
+    async encontraEnderecoId(id_endereco: number): Promise<Endereco>{
+        const endereco = await this.enderecoRepository.findOneBy({id_endereco});
+        if(!endereco){
+            return null
+        }
+        return endereco;
+    }
 }

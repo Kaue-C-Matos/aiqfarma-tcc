@@ -11,7 +11,7 @@ export class PedidosController{
         return this.pedidosService.encontraPedidos();
     }
 
-    @Get(':id_farmacia')
+    @Get('/farmacia/:id_farmacia')
     async getPedidosIdFarmacia(@Param('id_farmacia') id_farmacia: number): Promise<Pedidos[]>{
         const pedidos = await this.pedidosService.encontraPedidoIdFarm(id_farmacia)
         if (pedidos == null){

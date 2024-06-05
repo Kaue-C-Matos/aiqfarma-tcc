@@ -37,4 +37,7 @@ export class Pedidos{
     @ManyToOne(()=>Farmacia)
     @JoinColumn({name: 'id_farmacia'})
     farmacia: Farmacia
+
+    @Column()
+    met_pagamento: string
 }
