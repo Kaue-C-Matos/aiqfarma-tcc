@@ -8,7 +8,7 @@ function Cabecalho({rota}) {
     const navigate = useNavigate()
 
     return(
-        <header style={{backgroundColor:"red", height:"100px" ,display: "flex", alignItems: "center"}}>
+        <header style={{backgroundColor:"#EE0200", height:"100px" ,display: "flex", alignItems: "center"}}>
             <ArrowLeftOutlined 
             onClick={()=> navigate(`${rota}`)}
             style={{

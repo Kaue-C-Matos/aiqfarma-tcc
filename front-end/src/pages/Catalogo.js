@@ -28,11 +28,16 @@ function Catalogo(){
     useEffect(()=>{
         fetchData()
     }, [fetchData])
+
+
+    const titulo = {backgroundColor: '#EE0200', height: 50, margin: "20px 0 0 0", color: "white"}
+    const carrossel = {backgroundColor: '#EE0200', padding: "20px 5px"}
+
     return(
         <div>
             <Cabecalho rota={"/"}/>
-            <Title level={3} style={{backgroundColor: "red", height: 50, margin: "20px 0 0 0", color: "white"}}>Medicamentos</Title>
-            <Carousel slidesToShow={2.02} style={{backgroundColor: "red", padding: "20px 5px"}} >
+            <Title level={3} style={titulo}>Medicamentos</Title>
+            <Carousel slidesToShow={2.02} style={carrossel} >
                 {produtos
                 .filter(produtos => produtos.categoria === "medicamento")
                 .map((produtos)=>{
@@ -48,8 +53,8 @@ function Catalogo(){
                 })}
             </Carousel>
 
-            <Title level={3} style={{backgroundColor: "red", height: 50, margin: "20px 0 0 0", color: "white"}}>Higiene</Title>
-            <Carousel slidesToShow={2.02} style={{backgroundColor: "red", padding: "20px 5px"}} >
+            <Title level={3} style={titulo}>Higiene</Title>
+            <Carousel slidesToShow={2.02} style={carrossel} >
                 {produtos
                 .filter(produtos => produtos.categoria === "higiene")
                 .map((produtos)=>{
