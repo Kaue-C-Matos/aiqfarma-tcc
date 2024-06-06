@@ -7,6 +7,7 @@ import { ConfigProvider } from 'antd';
 import DetalheProduto from './pages/DetalheProduto.js';
 import Catalogo from './pages/Catalogo.js';
 import CadastrarProdutos from './pages/CadastrarProdutos.js';
+import CompraProduto from './pages/CompraProduto.js';
 
 function App() {
   
@@ -30,6 +31,11 @@ function App() {
       {
         path: "/cadastro",
         element: <CadastrarProdutos/>
+      },
+
+      {
+        path: "/compra",
+        element: <CompraProduto/>
       }
     ])
 

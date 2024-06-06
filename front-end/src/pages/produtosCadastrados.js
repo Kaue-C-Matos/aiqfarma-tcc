@@ -34,9 +34,9 @@ function ProdutosCadastrados() {
 
     return(
         <Divider>
-            <Divider orientation="left">
-                <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "25px"}}/>
-            </Divider>
+                <Divider orientation="left">
+                    <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "25px"}}/>
+                </Divider>
             <Title type="primary" style={{color: "#B60000"}}>Produtos Cadastrados</Title>
             <Button type="dashed" icon={<PlusSquareFilled/>} iconPosition={"position"} 
             style={btnCadastrar}>
