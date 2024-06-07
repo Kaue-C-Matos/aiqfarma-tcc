@@ -40,7 +40,7 @@ function ProdutosCadastrados() {
             </div>
             <Title type="primary" style={{color: "#B60000", textAlign: "center"}}>Produtos Cadastrados</Title>
             <Button type="dashed" icon={<PlusSquareFilled/>} iconPosition={"position"} 
-            style={btnCadastrar}>
+            style={btnCadastrar} onClick={()=>navigate("/cadastrar")}>
                 Cadastrar novo<br/>produto
             </Button>
             <div>
