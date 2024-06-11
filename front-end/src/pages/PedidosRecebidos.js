@@ -63,6 +63,7 @@ function PedidosRecebidos() {
                             bairro={endereco.bairro}
                             rua={endereco.rua}
                             numero={endereco.numero}
+                            retirada={pedido.retirada}
                         />
                     );
                 })}

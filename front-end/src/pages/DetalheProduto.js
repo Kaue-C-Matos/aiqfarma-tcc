@@ -2,12 +2,13 @@ import {Button, Image,Typography } from 'antd';
 import Cabecalho from "../components/Cabecalho";
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 const {Title, Text} = Typography;
 
 function DetalheProduto(){
+  const navigate = useNavigate()
 
-  const produtoEscolhido = useParams().produtoEscolhido
+  const produtoEscolhido = useParams().id
   const [produto, setProduto] = useState({})
   const [imagem, setImagem] = useState({})
   const [farmacia, setFarmacia] = useState({})
@@ -65,6 +66,7 @@ function DetalheProduto(){
             fontSize:25,
             margin:20,
             boxShadow:"2px 5px 10px black"}}
+            onClick={()=> navigate(`/comprar/${produtoEscolhido}`)}
           >
             Comprar!
           </Button>
