@@ -40,4 +40,10 @@ export class Pedidos{
 
     @Column()
     met_pagamento: string
+
+    @Column()
+    retirada: string
+
+    @Column()
+    status: boolean
 }

@@ -35,4 +35,7 @@ export class Produtos {
     @OneToOne(()=>Imagem)
     @JoinColumn({name:"id_imagem"})
     imagem:Imagem
+
+    @Column()
+    quantidade: number
 }

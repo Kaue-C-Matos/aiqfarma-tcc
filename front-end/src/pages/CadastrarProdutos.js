@@ -1,5 +1,5 @@
 import { ArrowLeftOutlined } from '@ant-design/icons';
-import {Typography } from 'antd';
+import {InputNumber, Typography } from 'antd';
 import { Form, Input, Select } from 'antd';
 import { Button } from 'antd';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +27,8 @@ function CadastrarProdutos(){
         descricao: valores.detalhes,
         categoria: valores.categoria,
         id_farmacia: 1,
-        id_imagem: imagemId
+        id_imagem: imagemId,
+        quantidade: valores.quantidade
       })
     })
 
@@ -47,7 +48,7 @@ function CadastrarProdutos(){
 
       <Form style={{width:250}} onFinish={onFinish}>      
         <Form.Item required name="nome" label={<label style={label}><b>Nome</b></label>}>
-          <Input data-nome minLength={5} maxLength={100} placeholder="insira o nome do produto" style={{borderColor: "#000"}} />
+          <Input minLength={5} maxLength={100} placeholder="insira o nome do produto" style={{borderColor: "#000"}} />
         </Form.Item>
 
         <Form.Item required name="imagem" label={<label style={label}><b>Imagem</b></label>}>
@@ -61,11 +62,15 @@ function CadastrarProdutos(){
         <Form.Item required name="valor" label={<label style={label}><b>Valor</b></label>}>
           <NumericFormat prefix='R$ ' decimalScale={2} decimalSeparator=',' valueIsNumericString customInput={Input} allowNegative={false} placeholder="insira o valor do produto" required style={{borderColor: "#000"}}/>
         </Form.Item>
+
+        <Form.Item required name="quantidade" label={<label style={label}><b>Quantidade</b></label>}>
+          <InputNumber type='number' maxLength={3} placeholder="Unidades disponíveis" style={{borderColor: "#000"}} />
+        </Form.Item>
     
         <Form.Item required name="categoria" label={<label style={label}><b>Categoria</b></label>}>
-          <Select style={{width:"200px", border: "2px solid", borderRadius: 10}}>
-            <Select.Option value="Medicamento">Medicamento</Select.Option>
-            <Select.Option value="Higiene">Higiene</Select.Option>
+          <Select style={{width:"200px", border: "2px solid", borderRadius: 8}}>
+            <Select.Option value="medicamento">medicamento</Select.Option>
+            <Select.Option value="higiene">higiene</Select.Option>
           </Select>
         </Form.Item>
 
