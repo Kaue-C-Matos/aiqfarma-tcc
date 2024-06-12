@@ -49,6 +49,10 @@ function DetalheProduto(){
           R${produto.preco}
         </Title>
 
+        <Title style={{ color:"#B50000",margin: "20px 0 15px 15px",fontSize:"20px"}}>
+          {produto.quantidade} unidades disponíveis
+        </Title>
+
         <Title style={{marginLeft:"10px",marginTop:"15px", fontSize:"18px"}}>
           Fornecedor: <b style={{color: "#B50000"}}>{farmacia.nome}</b>
         </Title>

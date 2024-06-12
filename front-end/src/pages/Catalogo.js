@@ -39,7 +39,7 @@ function Catalogo(){
             <Title level={3} style={titulo}>Medicamentos</Title>
             <Carousel slidesToShow={2.02} style={carrossel} >
                 {produtos
-                .filter(produtos => produtos.categoria === "medicamento")
+                .filter(produtos => produtos.categoria === "medicamento"&& produtos.quantidade !== 0)
                 .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<CardProduto 
@@ -56,7 +56,7 @@ function Catalogo(){
             <Title level={3} style={titulo}>Higiene</Title>
             <Carousel slidesToShow={2.02} style={carrossel} >
                 {produtos
-                .filter(produtos => produtos.categoria === "higiene")
+                .filter(produtos => produtos.categoria === "higiene" && produtos.quantidade !== 0)
                 .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<CardProduto 

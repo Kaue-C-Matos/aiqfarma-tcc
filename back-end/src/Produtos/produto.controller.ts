@@ -1,4 +1,4 @@
-import {Body, Controller,Delete,Get, HttpStatus, NotFoundException, Param, Post, Put, Response} from "@nestjs/common";
+import {Body, Controller,Delete,Get, HttpStatus, NotFoundException, Param, Patch, Post, Put, Response} from "@nestjs/common";
 import { ProdutoService } from "./produto.service";
 import { Produtos } from "./produto.entity";
 
@@ -43,6 +43,11 @@ export class ProdutoController{
             throw new NotFoundException("Produto não encontrado, por favor verifique o ID")
         }
         return produto
+    }
+
+    @Patch('quantidade/:id')
+    async patchProdutoQuantidade(@Param('id') id: number, @Body('quantidade') quantidade: number) {
+        return this.produtoService.alterarQuantidade(id, quantidade)
     }
 
     @Delete(':id')

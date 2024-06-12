@@ -10,7 +10,7 @@ function CompraProduto() {
 
     const produtoEscolhido = useParams().id
 
-    let [quantidade, setQuantidade] = useState(1)
+    let [quantidadeTotal, setQuantidadeTotal] = useState(1)
     const [botaoDiminuir, setBotaoDiminuir] = useState("#610E00")
     const [botaoAumentar, setBoatoAumentar] = useState("#610E00")
 
@@ -32,9 +32,9 @@ function CompraProduto() {
 
     async function comprar(valores) {
         await axios.post('http://localhost:3000/pedidos', {
-            valor_total: (quantidade * produto.preco),
+            valor_total: (quantidadeTotal * produto.preco),
             cliente: "Julia Kauani",
-            quantidade: quantidade,
+            quantidade: quantidadeTotal,
             id_endereco_cliente: 8,
             id_produto: produtoEscolhido,
             id_farmacia: produto.id_farmacia,
@@ -42,29 +42,33 @@ function CompraProduto() {
             retirada: valores.entrega
         })
 
+        await axios.patch(`http://localhost:3000/produtos/quantidade/${produtoEscolhido}`,{
+            quantidade: produto.quantidade - quantidadeTotal
+        })
+
         navigate("/catalogo")
     }
 
     function diminuir(){
-        if (quantidade > 1){
-            setQuantidade(quantidade-1)
+        if (quantidadeTotal > 1){
+            setQuantidadeTotal(quantidadeTotal-1)
         }else{
-            setQuantidade(quantidade)
+            setQuantidadeTotal(quantidadeTotal)
         }
     }
 
     function aumentar(){
-        if (quantidade < 5){
-            setQuantidade(quantidade+1)
+        if (quantidadeTotal < produto.quantidade){
+            setQuantidadeTotal(quantidadeTotal+1)
         }else{
-            setQuantidade(quantidade)
+            setQuantidadeTotal(quantidadeTotal)
         }
     }
 
     useEffect(()=>{
-        if (quantidade === 1) {
+        if (quantidadeTotal === 1) {
             setBotaoDiminuir("#9d9d9d")
-        } else if(quantidade === 5){
+        } else if(quantidadeTotal === produto.quantidade){
             setBoatoAumentar("#9d9d9d")
         } else {
             setBotaoDiminuir("#610E00")
@@ -89,7 +93,7 @@ function CompraProduto() {
                 Produto
             </Title>
 
-            <div style={{ display: "flex", backgroundColor: "#D9D9D9", width: 270, padding: "10px 0px", gap: 8, margin: 4, borderRadius: 5 }}>
+            <div style={{ display: "flex", backgroundColor: "#D9D9D9", width: 270, padding: "10px 0px", gap: 20, margin: 4, borderRadius: 5, alignItems: "center",}}>
                 <Image width={220} style={{ margin: "5px" }} src={imagem.imagem} />
                 <b>{produto.nome}</b>
             </div>
@@ -101,22 +105,19 @@ function CompraProduto() {
 
                 <div style={{ display: "flex", marginTop: 12, gap: 8 }}>
                     <MinusCircleFilled style={{ fontSize: 25, color: botaoDiminuir }} onClick={() => diminuir()}/>
-                    <p>{quantidade}</p>
+                    <p>{quantidadeTotal}</p>
                     <PlusCircleFilled style={{ fontSize: 25, color: botaoAumentar }} onClick={() => aumentar()} />
                 </div>
             </div>
 
-            <Form onFinish={comprar}>
-                <div style={{ margin: "50px 15px" }}>
+            <Form onFinish={comprar} style={{margin:"0 10px"}}>
                     <Form.Item required name="entrega" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Retirada do Produto</b></label>}>
                         <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
                             <Select.Option value="Entrega a domicilio">Entrega a domicilio</Select.Option>
                             <Select.Option value="Retirada no local">Retirada no local</Select.Option>
                         </Select>
                     </Form.Item>
-                </div>
 
-                <div style={{ margin: "50px 15px" }}>
                     <Form.Item required name="pagamento" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Forma de Pagamento</b></label>}>
                         <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
                             <Select.Option value="Pix">Pix</Select.Option>
@@ -124,10 +125,9 @@ function CompraProduto() {
                             <Select.Option value="Dinheiro">Dinheiro</Select.Option>
                         </Select>
                     </Form.Item>
-                </div>
 
                 <Form.Item style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
-                    <Button style={{ backgroundColor: "#610E00", borderRadius: 15 }} type="primary" htmlType="submit">Finalizar Pedido!</Button>
+                    <Button style={{ backgroundColor: "#610E00", borderRadius: 15, height: 40, width: 150}} type="primary" htmlType="submit">Finalizar Pedido!</Button>
                 </Form.Item>
             </Form>
         </div>

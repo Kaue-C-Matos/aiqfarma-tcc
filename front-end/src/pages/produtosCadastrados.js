@@ -50,7 +50,9 @@ function ProdutosCadastrados() {
                         imagem={imagem.imagem} 
                         nome={produtos.nome} 
                         preco={produtos.preco}
+                        quantidade={produtos.quantidade}
                         imgDescricao={imagem.descricao}
+                        editar={()=>navigate(`alterar/${produtos.id_produto}`)}
                         key={produtos.id_produto}
                     />)
                 })}

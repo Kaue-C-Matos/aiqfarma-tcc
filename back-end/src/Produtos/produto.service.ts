@@ -38,6 +38,16 @@ export class ProdutoService{
         return this.produtoRepository.save(produtoData);
     }
 
+    async alterarQuantidade(id_produto: number, quantidade: number): Promise<Produtos>{
+        const produto = await this.produtoRepository.findOneBy({id_produto})
+        if(!produto){
+            return null
+        }
+        produto.quantidade = quantidade
+        await this.produtoRepository.save(produto)
+        return produto;
+    }
+
     async alteraProduto(id_produto: number, produtoData: Partial<Produtos>): Promise<Produtos>{
         await this.produtoRepository.update(id_produto, produtoData)
         return this.encontraProdutoId(id_produto)

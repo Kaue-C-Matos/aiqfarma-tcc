@@ -8,6 +8,7 @@ import Catalogo from './pages/Catalogo.js';
 import PedidosRecebidos from "./pages/PedidosRecebidos.js";
 import CadastrarProdutos from "./pages/CadastrarProdutos.js";
 import CompraProduto from "./pages/CompraProduto.js";
+import AlterarProduto from "./pages/AlterarProduto.js";
 
 function App() {
   
@@ -39,6 +40,10 @@ function App() {
       {
         path: "/comprar/:id",
         element: <CompraProduto/>
+      },
+      {
+        path: "produtos/alterar/:id",
+        element: <AlterarProduto/>
       }
     ])
 
