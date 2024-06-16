@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider} from "react-router-dom"
+import { BrowserRouter, Route, Routes} from "react-router-dom"
 import React from 'react';
 import { ConfigProvider } from 'antd';
 import Inicio from './pages/inicio'
@@ -9,43 +9,11 @@ import PedidosRecebidos from "./pages/farmacia/PedidosRecebidos";
 import CadastrarProdutos from "./pages/farmacia/CadastrarProdutos"
 import CompraProduto from "./pages/cliente/CompraProduto";
 import AlterarProduto from "./pages/farmacia/AlterarProduto";
+import ConfirmacaoCompra from "./pages/cliente/ConfirmacaoCompra";
+import AutorizacaoProvider from "./context/AutorizaçãoContext";
+import RotaProtegida from "./components/RotaProtegida";
 
 function App() {
-  
-  const routes = createBrowserRouter([
-      {
-        path: "/",
-        element: <Inicio/>
-      },
-      {
-        path: "/produtos",
-        element: <ProdutosCadastrados/>
-      },
-      {
-        path: "/detalhes/:id",
-        element: <DetalheProduto/>
-      },
-      {
-        path: "/catalogo",
-        element: <Catalogo/>
-      },
-      {
-        path: "/pedidos",
-        element: <PedidosRecebidos/>
-      },
-      {
-        path: "/cadastrar",
-        element: <CadastrarProdutos/>
-      },
-      {
-        path: "/comprar/:id",
-        element: <CompraProduto/>
-      },
-      {
-        path: "produtos/alterar/:id",
-        element: <AlterarProduto/>
-      }
-    ])
 
   return (
     <div>
@@ -61,7 +29,27 @@ function App() {
           },
         }}
       >    
-        <RouterProvider router={routes}/>
+        <AutorizacaoProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Inicio/>} />
+
+              <Route path="/produtos" element={<ProdutosCadastrados/>} />
+              <Route path="/cadastrar" element={<CadastrarProdutos/>} />
+              <Route path="/produtos/alterar/:id" element={<AlterarProduto/>} />
+              <Route path="/pedidos" element={<PedidosRecebidos/>} />
+
+              <Route path="/catalogo" element={<Catalogo/>}/>
+              <Route path="/detalhes/:id" element={<DetalheProduto/>}/>
+              <Route path="/comprar/:id" element={<CompraProduto/>}/>
+              <Route path="/confirmacao" element={
+                <RotaProtegida>
+                  <ConfirmacaoCompra/>
+                </RotaProtegida>
+              }/>
+            </Routes>
+          </BrowserRouter>
+        </AutorizacaoProvider>
       </ConfigProvider>
     </div>
   );

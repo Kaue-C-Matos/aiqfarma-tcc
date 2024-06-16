@@ -4,9 +4,11 @@ import Title from "antd/es/typography/Title"
 import axios from "axios"
 import { useCallback, useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { useAuth } from "../../context/AutorizaçãoContext"
 
 function CompraProduto() {
     const navigate = useNavigate()
+    const {setEstaAutorizado} = useAuth()
 
     const produtoEscolhido = useParams().id
 
@@ -46,7 +48,8 @@ function CompraProduto() {
             quantidade: produto.quantidade - quantidadeTotal
         })
 
-        navigate("/catalogo")
+        setEstaAutorizado(true)
+        navigate("/confirmacao")
     }
 
     function diminuir(){
