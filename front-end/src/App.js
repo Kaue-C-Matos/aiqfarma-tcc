@@ -1,14 +1,14 @@
 import { createBrowserRouter, RouterProvider} from "react-router-dom"
-import ProdutosCadastrados from './pages/produtosCadastrados.js';
-import Inicio from './pages/inicio.js';
-import DetalheProduto from './pages/DetalheProduto.js'
 import React from 'react';
 import { ConfigProvider } from 'antd';
-import Catalogo from './pages/Catalogo.js';
-import PedidosRecebidos from "./pages/PedidosRecebidos.js";
-import CadastrarProdutos from "./pages/CadastrarProdutos.js";
-import CompraProduto from "./pages/CompraProduto.js";
-import AlterarProduto from "./pages/AlterarProduto.js";
+import Inicio from './pages/inicio'
+import ProdutosCadastrados from "./pages/farmacia/produtosCadastrados";
+import DetalheProduto from "./pages/cliente/DetalheProduto";
+import Catalogo from "./pages/cliente/Catalogo";
+import PedidosRecebidos from "./pages/farmacia/PedidosRecebidos";
+import CadastrarProdutos from "./pages/farmacia/CadastrarProdutos"
+import CompraProduto from "./pages/cliente/CompraProduto";
+import AlterarProduto from "./pages/farmacia/AlterarProduto";
 
 function App() {
   

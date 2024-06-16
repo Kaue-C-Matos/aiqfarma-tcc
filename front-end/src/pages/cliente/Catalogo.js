@@ -1,9 +1,9 @@
 import { Carousel, Typography } from "antd"
-import Cabecalho from "../components/Cabecalho"
-import CardProduto from "../components/CardProduto"
 import { useCallback, useEffect, useState } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import Cabecalho from "../../components/Cabecalho"
+import CardProduto from "../../components/CardProduto"
 const {Title} = Typography
 
 function Catalogo(){
@@ -42,7 +42,7 @@ function Catalogo(){
                 .filter(produtos => produtos.categoria === "medicamento"&& produtos.quantidade !== 0)
                 .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
-                    return(<CardProduto 
+                    return(<CardProduto
                         imagem={imagem.imagem} 
                         nome={produtos.nome} 
                         preco={produtos.preco}

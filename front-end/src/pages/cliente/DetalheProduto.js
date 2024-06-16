@@ -1,5 +1,5 @@
 import {Button, Image,Typography } from 'antd';
-import Cabecalho from "../components/Cabecalho";
+import Cabecalho from "../../components/Cabecalho";
 import { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -31,7 +31,7 @@ function DetalheProduto(){
 
   useEffect(()=>{
     fetchData()
-}, [fetchData])
+  }, [fetchData])
 
   return(
     <div>

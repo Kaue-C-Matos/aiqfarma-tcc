@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
-import PedidosFarmacia from '../components/PedidosFarmacia/PedidosFarmacia'
 import { useNavigate } from 'react-router-dom';
 import { ArrowLeftOutlined } from '@ant-design/icons';
 import { Typography } from 'antd';
+import PedidosFarmacia from '../../components/PedidosFarmacia/PedidosFarmacia'
 
 const { Title } = Typography;
 
@@ -51,7 +51,7 @@ function PedidosRecebidos() {
                     const endereco = enderecos.find(endereco => endereco.id_endereco === pedido.id_endereco_cliente);
 
                     return (
-                        <PedidosFarmacia 
+                        <PedidosFarmacia
                             key={pedido.id_pedido}
                             imagem={imagem.imagem}
                             descricaoImg={imagem.descricao}
