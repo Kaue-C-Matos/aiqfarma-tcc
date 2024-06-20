@@ -29,6 +29,7 @@ function Catalogo(){
         fetchData()
     }, [fetchData])
 
+    const produtosFiltrados = produtos.filter(produto => produto.quantidade !== 0 && produto.status === true)
 
     const titulo = {backgroundColor: '#EE0200', height: 50, margin: "20px 0 0 0", color: "white"}
     const carrossel = {backgroundColor: '#EE0200', padding: "20px 5px"}
@@ -38,8 +39,8 @@ function Catalogo(){
             <Cabecalho rota={"/"}/>
             <Title level={3} style={titulo}>Medicamentos</Title>
             <Carousel slidesToShow={2.02} style={carrossel} >
-                {produtos
-                .filter(produtos => produtos.categoria === "medicamento"&& produtos.quantidade !== 0)
+                {produtosFiltrados
+                .filter(produtos => produtos.categoria === "medicamento")
                 .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<CardProduto
@@ -56,7 +57,7 @@ function Catalogo(){
             <Title level={3} style={titulo}>Higiene</Title>
             <Carousel slidesToShow={2.02} style={carrossel} >
                 {produtos
-                .filter(produtos => produtos.categoria === "higiene" && produtos.quantidade !== 0)
+                .filter(produtos => produtos.categoria === "higiene")
                 .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<CardProduto 

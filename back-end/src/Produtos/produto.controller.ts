@@ -50,6 +50,11 @@ export class ProdutoController{
         return this.produtoService.alterarQuantidade(id, quantidade)
     }
 
+    @Patch('status/:id')
+    async patchProdutoStatus(@Param('id') id: number, @Body('status') status: boolean){
+        return this.produtoService.alterarStatus(id, status)
+    }
+
     @Delete(':id')
     async deleteProduto(@Param('id') id: number, @Response() res){
         const produto = await this.produtoService.encontraProdutoId(id)

@@ -78,7 +78,7 @@ function CompraProduto() {
             setBoatoAumentar("#610E00")
         }
         
-    }, [diminuir])
+    }, [diminuir, aumentar])
 
     useEffect(()=>{
         fetchData()

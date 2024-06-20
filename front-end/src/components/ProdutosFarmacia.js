@@ -4,7 +4,7 @@ import axios from "axios"
 import { useState } from "react"
 const {Text, Title} = Typography
 
-function ProdutosFarmacia({imagem, imgDescricao, nome, preco, quantidade, editar, id}){
+function ProdutosFarmacia({imagem, imgDescricao, nome, preco, quantidade, editar, id, status}){
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
 
@@ -18,7 +18,9 @@ function ProdutosFarmacia({imagem, imgDescricao, nome, preco, quantidade, editar
 
     const handleOk = async() =>{
         setLoading(true)
-        await axios.delete(`http://localhost:3000/produtos/${id}`).then(console.log(`${id} deletado`))
+        await axios.patch(`http://localhost:3000/produtos/status/${id}`, {
+            status: !status
+        }).then(console.log(`${id} deletado`))
         localStorage.setItem("sucesso" , 'Produto deletado com sucesso')
         setTimeout(()=>{
             setOpen(false)

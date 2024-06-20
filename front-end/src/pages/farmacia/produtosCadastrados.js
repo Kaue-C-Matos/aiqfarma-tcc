@@ -40,6 +40,8 @@ function ProdutosCadastrados() {
     const btnCadastrar = {color: "#B60000", height: "100px" ,width: "90%", fontSize: "25px", borderWidth: "5px",borderColor: "#B60000" , padding: "10px",
     boxSizing: "border-box", marginBottom: "40px"}
 
+    const produtosFiltrados = produtos.filter(produto => {return produto.status === true})
+
     return(
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <div style={{display: "flex", justifyContent: "space-between", margin: 10, width: "90%"}}>
@@ -52,7 +54,8 @@ function ProdutosCadastrados() {
                 Cadastrar novo<br/>produto
             </Button>
             <div>
-                {produtos.map((produtos)=>{
+                {produtosFiltrados
+                .map((produtos)=>{
                     const imagem = imagens.find((imagem)=> imagem.idimagem === produtos.id_imagem)
                     return(<ProdutosFarmacia 
                         id={produtos.id_produto}
@@ -61,6 +64,7 @@ function ProdutosCadastrados() {
                         preco={produtos.preco}
                         quantidade={produtos.quantidade}
                         imgDescricao={imagem.descricao}
+                        status={produtos.status}
                         editar={()=>navigate(`alterar/${produtos.id_produto}`)}
                         key={produtos.id_produto}
                     />)
