@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { BrowserRouter, Route, Routes} from "react-router-dom"
 import React from 'react';
 import { ConfigProvider } from 'antd';
@@ -14,6 +15,48 @@ import AutorizacaoProvider from "./context/AutorizaçãoContext";
 import RotaProtegida from "./components/RotaProtegida";
 
 function App() {
+=======
+import './App.css';
+import { createBrowserRouter, RouterProvider} from "react-router-dom"
+import ProdutosCadastrados from './pages/produtosCadastrados.js';
+import Inicio from './pages/inicio.js';
+import React from 'react';
+import { ConfigProvider } from 'antd';
+import DetalheProduto from './pages/DetalheProduto.js';
+import Catalogo from './pages/Catalogo.js';
+import CadastrarProdutos from './pages/CadastrarProdutos.js';
+import CompraProduto from './pages/CompraProduto.js';
+
+function App() {
+  
+  const routes = createBrowserRouter([
+      {
+        path: "/",
+        element: <Inicio/>
+      },
+      {
+        path: "/produtos",
+        element: <ProdutosCadastrados/>
+      },
+      {
+        path: "/detalhes",
+        element: <DetalheProduto/>
+      },
+      {
+        path: "/catalogo",
+        element: <Catalogo/>
+      },
+      {
+        path: "/cadastro",
+        element: <CadastrarProdutos/>
+      },
+
+      {
+        path: "/compra",
+        element: <CompraProduto/>
+      }
+    ])
+>>>>>>> 041e19ba5494f2f7c387c3f95cc465c4f0b1a386
 
   return (
     <div>
