@@ -41,20 +41,12 @@ function ProdutosCadastrados() {
     boxSizing: "border-box", marginBottom: "40px"}
 
     return(
-<<<<<<< HEAD:front-end/src/pages/farmacia/produtosCadastrados.js
         <div style={{display: "flex", flexDirection: "column", alignItems: "center"}}>
             <div style={{display: "flex", justifyContent: "space-between", margin: 10, width: "90%"}}>
                 <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "30px"}}/>
                 <SnippetsOutlined onClick={()=>navigate("/pedidos")} style={{fontSize: "30px"}}/>
             </div>
             <Title type="primary" style={{color: "#B60000", textAlign: "center"}}>Produtos Cadastrados</Title>
-=======
-        <Divider>
-                <Divider orientation="left">
-                    <ArrowLeftOutlined onClick={()=>navigate("/")} style={{fontSize: "25px"}}/>
-                </Divider>
-            <Title type="primary" style={{color: "#B60000"}}>Produtos Cadastrados</Title>
->>>>>>> 041e19ba5494f2f7c387c3f95cc465c4f0b1a386:front-end/src/pages/produtosCadastrados.js
             <Button type="dashed" icon={<PlusSquareFilled/>} iconPosition={"position"} 
             style={btnCadastrar} onClick={()=>navigate("/cadastrar")}>
                 Cadastrar novo<br/>produto
