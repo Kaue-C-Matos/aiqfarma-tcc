@@ -36,6 +36,16 @@ export class PedidosService{
         return this.pedidosRepository.save(pedidoData)
     }
 
+    async alteraStatus(id_pedido: number, status: boolean): Promise<Pedidos>{
+        const pedido = await this.pedidosRepository.findOneBy({id_pedido})
+        if(!pedido){
+            return null
+        }
+        pedido.status = status;
+        await this.pedidosRepository.save(pedido)
+        return pedido;
+    }
+
     async deletaPedido(id_pedido: number): Promise<void>{
         const pedido = await this.pedidosRepository.findOneBy({id_pedido});
         if(!pedido){

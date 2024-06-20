@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Post, Response } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpStatus, NotFoundException, Param, Patch, Post, Response } from "@nestjs/common";
 import { PedidosService } from "./pedidos.service";
 import { Pedidos } from "./pedidos.entity";
 
@@ -23,6 +23,11 @@ export class PedidosController{
     @Post()
     postPedidos(@Body() pedidoData: Partial<Pedidos>): Promise<Pedidos>{
         return this.pedidosService.cadastraPedido(pedidoData)
+    }
+
+    @Patch(':id')
+    async patchPedidoStatus(@Param('id') id: number, @Body('status') status: boolean) {
+        return this.pedidosService.alteraStatus(id, status);
     }
 
     @Delete(':id')
