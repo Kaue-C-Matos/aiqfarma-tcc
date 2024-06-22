@@ -114,20 +114,24 @@ function CompraProduto() {
             </div>
 
             <Form onFinish={comprar} style={{margin:"0 10px"}}>
-                    <Form.Item required name="entrega" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Retirada do Produto</b></label>}>
-                        <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
-                            <Select.Option value="Entrega a domicilio">Entrega a domicilio</Select.Option>
-                            <Select.Option value="Retirada no local">Retirada no local</Select.Option>
-                        </Select>
-                    </Form.Item>
+                <Form.Item required name="entrega" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Retirada do Produto</b></label>}>
+                    <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
+                        <Select.Option value="Entrega a domicilio">Entrega a domicilio</Select.Option>
+                        <Select.Option value="Retirada no local">Retirada no local</Select.Option>
+                    </Select>
+                </Form.Item>
 
-                    <Form.Item required name="pagamento" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Forma de Pagamento</b></label>}>
-                        <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
-                            <Select.Option value="Pix">Pix</Select.Option>
-                            <Select.Option value="Cartao de crédito">Cartão de Credito</Select.Option>
-                            <Select.Option value="Dinheiro">Dinheiro</Select.Option>
-                        </Select>
-                    </Form.Item>
+                <Form.Item required name="pagamento" label={<label style={{ fontSize: 22, color: "#610E00" }}><b>Forma de Pagamento</b></label>}>
+                    <Select style={{ width: "180px", border: "2px solid", borderRadius: 8 }}>
+                        <Select.Option value="Pix">Pix</Select.Option>
+                        <Select.Option value="Cartao de crédito">Cartão de Credito</Select.Option>
+                        <Select.Option value="Dinheiro">Dinheiro</Select.Option>
+                    </Select>
+                </Form.Item>
+
+                <Title level={4} style={{ backgroundColor: "#610E00", width: 260, borderRadius: 15, height: 45, color: "white", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                    Valor do Pedido: {(quantidadeTotal * produto.preco)}
+                </Title>
 
                 <Form.Item style={{ display: "flex", alignItems: "center", justifyContent: "center"}}>
                     <Button style={{ backgroundColor: "#610E00", borderRadius: 15, height: 40, width: 150}} type="primary" htmlType="submit">Finalizar Pedido!</Button>
