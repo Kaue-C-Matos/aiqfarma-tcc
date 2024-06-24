@@ -12,7 +12,7 @@ export class PedidosService{
 
     async encontraPedidos(): Promise<Pedidos[]>{
         return this.pedidosRepository.find({
-            relations: {produto: true, endereco: true, farmacia: true}
+            relations: {produto: true, farmacia: true}
         })
     }
 

@@ -13,22 +13,19 @@ function PedidosRecebidos() {
     const [pedidos, setPedidos] = useState([]);
     const [produtos, setProdutos] = useState([]);
     const [imagens, setImagens] = useState([]);
-    const [enderecos, setEnderecos] = useState([]);
     const [filtro, setFiltro] = useState("");
 
     const fetchData = useCallback(async () => {
         try {
-            const [pedidosResponse, produtosResponse, imagensResponse, enderecoResponse] = await Promise.all([
+            const [pedidosResponse, produtosResponse, imagensResponse] = await Promise.all([
                 axios.get('http://localhost:3000/pedidos/farmacia/1'),
                 axios.get('http://localhost:3000/produtos'),
                 axios.get('http://localhost:3000/imagem'),
-                axios.get('http://localhost:3000/endereco')
             ]);
 
             setPedidos(pedidosResponse.data);
             setProdutos(produtosResponse.data);
             setImagens(imagensResponse.data);
-            setEnderecos(enderecoResponse.data);
         } catch (error) {
             console.error('Erro ao buscar dados:', error);
         }
@@ -82,7 +79,6 @@ function PedidosRecebidos() {
                 .map((pedido) => {
                     const produto = produtos.find(produto => produto.id_produto === pedido.id_produto);
                     const imagem = imagens.find(imagem => imagem.idimagem === produto.id_imagem);
-                    const endereco = enderecos.find(endereco => endereco.id_endereco === pedido.id_endereco_cliente);
 
                     return (
                         <PedidosFarmacia
@@ -94,9 +90,7 @@ function PedidosRecebidos() {
                             preco={pedido.valor_total}
                             mtdPagamento={pedido.met_pagamento}
                             cliente={pedido.cliente}
-                            bairro={endereco.bairro}
-                            rua={endereco.rua}
-                            numero={endereco.numero}
+                            endereco={pedido.endereco_cliente}
                             retirada={pedido.retirada}
                             icone={
                                 pedido.status 

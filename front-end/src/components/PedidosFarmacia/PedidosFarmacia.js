@@ -2,7 +2,7 @@ import style from './PedidosFarmacia.module.css'
 import { Typography } from "antd";
 const {Title, Text} = Typography
 
-function PedidosFarmacia({imagem, descricaoImg, produto, unidades, preco, mtdPagamento, cliente, bairro, rua, numero, retirada, icone, status}){
+function PedidosFarmacia({imagem, descricaoImg, produto, unidades, preco, mtdPagamento, cliente, endereco, retirada, icone, status}){
     
     const texto = {color: "#fff", fontSize: "18px"}
 
@@ -23,7 +23,7 @@ function PedidosFarmacia({imagem, descricaoImg, produto, unidades, preco, mtdPag
                 <Text style={texto}>{retirada}</Text><br/><br/>
                 
                 <Text style={texto}>{cliente}</Text><br/>
-                <Text style={texto}>{bairro}, {rua}, {numero}</Text>
+                <Text style={texto}>{endereco}</Text>
             </div>
         </div>
     )

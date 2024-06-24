@@ -1,4 +1,3 @@
-import { Endereco } from "src/Endereco/endereco.entity";
 import { Farmacia } from "src/Farmacia/farmacia.entity";
 import { Produtos } from "src/Produtos/produto.entity";
 import { Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
@@ -18,11 +17,7 @@ export class Pedidos{
     quantidade: number
 
     @Column()
-    id_endereco_cliente: number
-
-    @ManyToOne(()=>Endereco)
-    @JoinColumn({name: 'id_endereco_cliente'})
-    endereco: Endereco
+    endereco_cliente: string
 
     @Column()
     id_produto: number
